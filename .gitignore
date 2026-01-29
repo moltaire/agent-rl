@@ -55,3 +55,6 @@ htmlcov/
 
 # Local development
 versions/
+
+# data files
+data/
