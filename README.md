@@ -7,7 +7,7 @@ This project is heavily inspired by [Rasmus Bruckner](https://github.com/rasmusb
 ## Installation
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/moltaire/agent-rl
 cd agent-rl
 uv venv && source .venv/bin/activate
 uv pip install -e .
