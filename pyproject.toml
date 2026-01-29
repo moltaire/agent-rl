@@ -11,6 +11,7 @@ dependencies = [
     "pandas>=2.0.0",
     "matplotlib>=3.7.0",
     "myplotlib",
+    "requests>=2.32.5",
 ]
 
 [project.optional-dependencies]

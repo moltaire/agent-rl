@@ -45,7 +45,21 @@ nll, bic, params, fitted_agent = estimator.estimate(data)
 
 ## Examples
 
-- [Replication analysis of Lefebvre et al. (2017)](notebooks/lefebvre2017_analysis.ipynb) - Model comparison of single vs dual learning rate agents in a multi-state task.
+### Lefebvre et al., 2017 reproduction
+
+In the [`lefebvre2017_analysis.ipynb`](notebooks/lefebvre2017_analysis.ipynb) notebook, I reproduce a main analysis of Lefebvre et al. [3], which includes:
+
+- Setup of a `MultipleStatesTask`
+- Fitting a `SingleLearningRateAgent` model
+- and a `DualLearningRateAgents` model to each individual's data
+- Model comparison
+- Reproduction of Figure 3
+
+Original data is available at [Figshare](https://figshare.com/articles/dataset/Behavioral_data_and_data_extraction_code/4265408/1?file=6949427). You can use this script to download the data automatically:
+
+```{python}
+uv run python scripts/download_lefebvre2017_data.py
+```
 
 ## References
 
