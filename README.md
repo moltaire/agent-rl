@@ -45,13 +45,22 @@ nll, bic, params, fitted_agent = estimator.estimate(data)
 
 ## Examples
 
-### Lefebvre et al., 2017 reproduction
+### Parameter recovery
+
+In the [`parameter_recovery.ipynb`](notebooks/parameter_recovery.ipynb) notebook demonstrates a simple parameter recovery routine involving:
+
+- Setup of a `ReversalLearningTask`
+- Simulating data from `DualLearningRateAgent`s
+- Parameter estimation for `DualLearningRateAgent`s
+- Comparison of generating and recovered parameters
+
+### Lefebvre et al. (2017) reproduction
 
 In the [`lefebvre2017_analysis.ipynb`](notebooks/lefebvre2017_analysis.ipynb) notebook, I reproduce a main analysis of Lefebvre et al. [3], which includes:
 
 - Setup of a `MultipleStatesTask`
 - Fitting a `SingleLearningRateAgent` model
-- and a `DualLearningRateAgents` model to each individual's data
+- and a `DualLearningRateAgent` model to each individual's data
 - Model comparison
 - Reproduction of Figure 3
 
