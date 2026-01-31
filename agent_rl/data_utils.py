@@ -17,8 +17,8 @@ def load_lefebvre_subject(matfile, experiment):
         pd.DataFrame: Formatted data with columns: subject, block, trial, s, a, r.
 
     Notes:
-        - Experiment 1: 52 subjects, 96 trials each
-        - Experiment 2: 38 subjects, 96 trials each
+        - Experiment 1: 50 subjects, 96 trials each
+        - Experiment 2: 35 subjects, 96 trials each
         - Both experiments use the same 4-state task structure
         - States: 0=75/25, 1=25/25, 2=25/75, 3=75/75
         - Actions: 0 or 1 (left or right)
