@@ -18,6 +18,8 @@ dependencies = [
 dev = [
     "pytest>=7.4.0",
     "pytest-cov>=4.1.0",
+    "jupyterlab>=4.0.0",
+    "ipykernel>=6.0.0",
 ]
 
 [build-system]
@@ -30,4 +32,4 @@ python_files = ["test_*.py"]
 python_functions = ["test_*"]
 
 [tool.uv.sources]
-myplotlib = { git = "https://github.com/moltaire/myplotlib.git" }
+myplotlib = { git = "https://github.com/moltaire/myplotlib.git", tag = "v0.1.0" }
