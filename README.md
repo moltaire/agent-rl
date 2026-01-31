@@ -62,11 +62,15 @@ task_vars = TaskVars(
     n_blocks=4,  
     n_trials=100,
     states = {
-        # reward conditions for the different states
+        # Reward conditions for the different states
         #   p_r:       contains probability of first reward for choosing each option
         #   rewards:   contains reward outcomes (for p_r and (1 - p_r) respectively)
         #   a_correct: indicates correct action, used to compute accuracy. both actions can be correct. 
-        0: {"p_r": [0.8, 0.2], "rewards": [1, 0], "a_correct": [0]},  # e.g., choosing 0 yields reward of 1 with p = 0.8, 0 otherwise
+        # 
+        # Example:
+        # State 0 choosing 0 yields reward of 1 with p = 0.8, 0 otherwise
+        # State 0 choosing 1 yields reward of 1 with p = 0.2, 0 otherwise
+        0: {"p_r": [0.8, 0.2], "rewards": [1, 0], "a_correct": [0]},  
         1: {"p_r": [0.2, 0.8], "rewards": [1, 0], "a_correct": [1]},
         2: {"p_r": [0.5, 0.5], "rewards": [1, 0], "a_correct": [0, 1]},
         3: {"p_r": [0.25, 0.25], "rewards": [2, 0], "a_correct": [0, 1]},
