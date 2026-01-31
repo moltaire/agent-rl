@@ -15,7 +15,7 @@ uv pip install -e .
 
 ## Quick Start
 
-### Data format
+### Fitting behavioral data
 
 Behavioral data should be a `pandas.DataFrame` with the following columns:
 
@@ -27,24 +27,58 @@ Behavioral data should be a `pandas.DataFrame` with the following columns:
 | `a` | Action taken (0-indexed) |
 | `r` | Reward received |
 
-### Example
+With this, you can fit a model to it like this:
 
 ```python
 from agent_rl import (
     AgentVars, DualLearningRateAgent,
-    TaskVars, MultipleStateTask,
-    agent_task_interaction,
     EstimationVars, Estimation,
 )
 
-# Create agent and simulate behavior
+# Read data
+data = pd.read_csv("data.csv")
+
+# Create agent
 agent_vars = AgentVars(alpha_pos=0.3, alpha_neg=0.2, beta=5.0)
 agent = DualLearningRateAgent(agent_vars, n_options=2, n_states=4)
-data = agent_task_interaction(task, agent)
 
 # Estimate parameters from behavioral data
 estimator = Estimation(est_vars)
 nll, bic, params, fitted_agent = estimator.estimate(data)
+```
+
+To simulate data (for recovery purposes, for example), you also need to set up a task:
+
+```python
+from agent_rl import (
+    TaskVars, MultipleStatesTask,
+    SingleLearningRateAgent,
+    agent_task_interaction
+)
+
+# Set up task
+task_vars = TaskVars(
+    n_options=2,  # number of options shown in each trial
+    n_blocks=4,  
+    n_trials=100,
+    states = {
+        # reward conditions for the different states
+        #   p_r:       contains probability of first reward for choosing each option
+        #   rewards:   contains reward outcomes (for p_r and (1 - p_r) respectively)
+        #   a_correct: indicates correct action, used to compute accuracy. both actions can be correct. 
+        0: {"p_r": [0.8, 0.2], "rewards": [1, 0], "a_correct": [0]},  # e.g., choosing 0 yields reward of 1 with p = 0.8, 0 otherwise
+        1: {"p_r": [0.2, 0.8], "rewards": [1, 0], "a_correct": [1]},
+        2: {"p_r": [0.5, 0.5], "rewards": [1, 0], "a_correct": [0, 1]},
+        3: {"p_r": [0.25, 0.25], "rewards": [2, 0], "a_correct": [0, 1]},
+    })
+task = MultipleStatesTask(task_vars)
+
+# Create agent
+agent_vars = AgentVars(alpha=0.2, beta=7.0)
+agent = SingleLearningRateAgent(agent_vars, n_options=2, n_states=4)
+
+# Simulate data
+sim_data = agent_task_interaction(task, agent)
 ```
 
 ## Agents
