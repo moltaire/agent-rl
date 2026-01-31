@@ -15,6 +15,20 @@ uv pip install -e .
 
 ## Quick Start
 
+### Data format
+
+Behavioral data should be a `pandas.DataFrame` with the following columns:
+
+| Column | Description |
+|--------|-------------|
+| `block` | Block number (0-indexed) |
+| `trial` | Trial number within block (0-indexed) |
+| `s` | State observed by the agent |
+| `a` | Action taken (0-indexed) |
+| `r` | Reward received |
+
+### Example
+
 ```python
 from agent_rl import (
     AgentVars, DualLearningRateAgent,
